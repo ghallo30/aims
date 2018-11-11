@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html ng-app="myApp" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>AIMS</title>
+  <link rel="icon" type="image/png" href="../../image/icon.png" sizes="32x32">
+    <!-- Bootstrap core CSS-->
+  <link href="../../lib/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+  <link href="../../lib/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+  <link href="../../lib/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+  <link href="../../lib/css/sb-admin.css" rel="stylesheet">
+    <!-- My Stylesheet -->
+  <link href="../../lib/css/style.css" rel="stylesheet">
+
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../lib/select/select2.min.css">
+
+</head>
+<body>
+
+	<div class="fixed-nav sticky-footer bg-dark" id="page-top">
+		<!-- Navigation-->
+	  	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"  style="background-color: #00441b;">
+		    <a class="navbar-brand" href="#" style="color: #ffff00; font-size: 16px;">
+		   		<img src="../../image/navlogo.png" alt="..." class="rounded-circle" style="height: 30px;">
+		   		 ARMM Information Management System
+			</a>
+		    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+
+		    <!-- SIDEBAR -->
+	     	<div class="collapse navbar-collapse" id="navbarResponsive">
+	            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion" style="background-color: #00441b;">
+	              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
+	                <a class="nav-link" href="../dashboard.html">
+	                  <i class="fa fa-fw fa-home"></i>
+	                  <span class="nav-link-text">Home</span>
+	                </a>
+	              </li>
+	              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profiling">
+	                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+	                  <i class="fa fa-fw fa-file-text-o"></i>
+	                  <span class="nav-link-text">Profiling</span>
+	                </a>
+	                <ul class="sidenav-second-level collapse" id="collapseExamplePages" style="background-color: #003314;">
+	                  <li><a href="prof_brgy.html">Barangay</a></li>
+	                  <li class="active"><a href="prof_coop.html">Cooperative</a></li>
+	                  <li><a href="prof_indv.html">Individual</a></li>
+	                </ul>
+	              </li>
+	              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reports" >
+	                <a class="nav-link" href="reports.html">
+	                  <i class="fa fa-fw fa-bar-chart"></i>
+	                  <span class="nav-link-text">Reports</span>
+	                </a>
+	              </li>
+	              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Mapping">
+	                <a class="nav-link" href="mapping.html">
+	                  <i class="fa fa-fw fa-map-marker"></i>
+	                  <span class="nav-link-text">Mapping</span>
+	                </a>
+	              </li>
+	              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projects" >
+	                <a class="nav-link" href="projects.html">
+	                  <i class="fa fa-fw fa-tasks"></i>
+	                  <span class="nav-link-text">Projects</span>
+	                </a>
+	              </li>
+	              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Indicators" >
+	                <a class="nav-link" href="addIndicator.html">
+	                  <i class="fa fa-fw fa-plus-circle"></i>
+	                  <span class="nav-link-text">Indicators</span>
+	                </a>
+	              </li>
+	            </ul>
+	            <ul class="navbar-nav sidenav-toggler" style="background-color: #003314;">
+	              <li class="nav-item">
+	                <a class="nav-link text-center" id="sidenavToggler">
+	                  <i class="fa fa-fw fa-angle-left"></i>
+	                </a>
+	              </li>
+	            </ul>
+	            <ul class="navbar-nav ml-auto">
+	              <li class="nav-item dropdown">
+	                <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                  Username
+	                </a>
+	                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+	                  <a class="dropdown-item" data-toggle="modal" data-target="#userProfile">
+	                    <i class="fa fa-fw fa-user"></i>User Profile
+	                  </a>
+	                  <div class="dropdown-divider"></div>
+	                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">
+	                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+	                  </a>
+	                </div>
+	              </li>
+	            </ul>
+	        </div>
+	  	</nav>
+
+	  	<br><br>
+		<!-- Page CONTENT -->
+		<div class="content-wrapper">
+			
+
+		    <div class="container-fluid">
+		      <!-- Breadcrumbs-->
+		      <ol class="breadcrumb">
+		        <li class="breadcrumb-item">
+		          <a href="#">Profiling</a>
+		        </li>
+		        <li class="breadcrumb-item active">Cooperative</li>
+		      </ol>
+
+		      <div class="card mb-3">
+		        <div class="card-header">
+		          <i class="fa fa-tasks"></i> Cooperative Profile Registration
+		      	</div>
+		        <div class="card-body">
+
+		          <div class="row">
+		            <div class="p-4 col-lg-12 table-responsive">
+
+		              <form id="regForm">
+		                <!-- <h4>New Project</h4>		  -->               
+						  <!-- One "tab" for each step in the form: -->
+
+						  <div class="tab">
+
+			                  <legend>
+			                  	<h6 class="text-center text-success">
+			                  		<strong>COOPERATIVE INFORMATION</strong>
+			                  	</h6>
+			                  </legend>
+			                  <div class="row">
+							  	  <div class="form-group col-lg-9">
+							  	  	<label>Cooperative Name</label>
+				                    <input type="text" class="form-control" id="titleProj" placeholder="Enter Name of Project">
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label for="clasIndc">Date of Registration</label>
+				                    <input type="date" class="form-control">
+				                  </div>
+
+
+			                  	<div class="form-group col-lg-3">
+			                  		<label>Agency Partnership</label>
+					                <input list="agencies" name="agency" class="form-control" placeholder="- Select/Type -">
+									<datalist id="agencies">
+									  <option value="DAR">
+									  <option value="DFA">
+									  <option value="DOA">
+									  <option value="DPWH">
+									  <option value="DOH">
+									  <option value="DSWD">
+									</datalist>
+			                	</div>
+			                  	<div class="form-group col-lg-3">
+			                  		<label>Province</label>
+					                <input list="provinces" name="province" class="form-control" placeholder="- Select/Type -">
+									<datalist id="provinces">
+									  <option value="Basilan">
+									  <option value="Lanao del Sur">
+									  <option value="Maguindanao">
+									  <option value="Sulu">
+									  <option value="Tawi-Tawi">
+									</datalist>
+			                	</div>
+			                  	<div class="form-group col-lg-3">
+			                  		<label>Municipality</label>
+					                <input list="municipals" name="municipal" class="form-control" placeholder="- Select/Type -">
+									<datalist id="municipals">
+									  <option value="Amai Manabilang">
+									  <option value="Bacolod-Kalawi">
+									  <option value="Balabagan">
+									  <option value="Balindong">
+									  <option value="Bayang">
+									  <option value="Binidayan">
+									  <option value="Buadiposo-Buntong">
+									  <option value="Bubong">
+									  <option value="Butig">
+									</datalist>
+			                	</div>
+			                  	<div class="form-group col-lg-3">
+			                  		<label>Barangay</label>
+					                <input list="brgys" name="brgy" class="form-control" placeholder="- Select/Type -">
+									<datalist id="brgys">
+									  <option value="Badak">
+									  <option value="Basak">
+									  <option value="Maindig">
+									  <option value="Olama">
+									</datalist>
+			                	</div>
+
+							  	  <div class="form-group col-lg-2">
+							  	  	<label>Type of Cooperative</label>
+					                <input list="typesCoop" name="typeCoop" class="form-control" placeholder="- Select/Type -">
+									<datalist id="typesCoop">
+									  <option value="Advocacy">
+									  <option value="Agrarian Reform">
+									  <option value="Consumer">
+									  <option value="Cooperative">
+									  <option value="Credit">
+									  <option value="Dairy">
+									  <option value="Education">
+									  <option value="Electric">
+									  <option value="Financial Service">
+									  <option value="Fishermen">
+									  <option value="Health Services">
+									  <option value="Housing">
+									  <option value="Insurance">
+									  <option value="Marketing">
+									  <option value="Multi-Purpose">
+									  <option value="Others">
+									  <option value="Producers">
+									  <option value="Service">
+									  <option value="Transport">
+									  <option value="Water Service">
+									  <option value="Workers">
+									</datalist>
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label for="cost">Classification</label>
+				                    <input type="number" class="form-control" id="cost" placeholder="Enter Classification">
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label for="cost">Category</label>
+				                    <input type="number" class="form-control" id="cost" placeholder="Enter Category">
+				                  </div>
+							  	  <div class="form-group col-lg-2">
+							  	  	<label>No. of Amendments</label>
+				                    <input type="number" class="form-control">
+				                  </div>
+							  	  <div class="form-group col-lg-2">
+							  	  	<label>Status</label>
+				                    <select class="form-control">
+				                    	<option>- Select -</option>
+				                    	<option>In progress</option>
+				                    	<option>Complete</option>
+				                    </select>
+				                  </div>
+
+				                  <div class="form-group col-lg-6">
+				                    <label>Board Members</label>
+					                    <div class="input-group">
+										  <input type="number" class="form-control" placeholder="No. of Male" id="bmM" onchange="bmFMale()">
+										  <input type="number" class="form-control" placeholder="No. of Female" id="bmF" onchange="bmFMale()">
+										  <input type="number" class="form-control" placeholder="Total" id="bmTotal" readonly>
+										</div>
+				                  </div>
+				                  <div class="form-group col-lg-6">
+				                    <label>Cooperative Members</label>
+					                    <div class="input-group">
+										  <input type="number" class="form-control" placeholder="No. of Male" id="cmM" onchange="cmFMale()">
+										  <input type="number" class="form-control" placeholder="No. of Female" id="cmF" onchange="cmFMale()">
+										  <input type="number" class="form-control" placeholder="Total" id="cmTotal" readonly>
+										</div>
+				                  </div>
+
+				                  <div class="form-group col-lg-4">
+				                    <label>Common Authorized</label>
+				                    <div class="input-group">
+									  <div class="input-group-prepend">
+									    <span class="input-group-text" id="">Php</span>
+									  </div>
+									  <input type="number" class="form-control" style="text-align: right">
+									  <div class="input-group-append">
+									    <span class="input-group-text" id="">.00</span>
+									  </div>
+									</div>
+				                  </div>
+				                  <div class="form-group col-lg-4">
+				                    <label>Common Subscribed</label>
+				                    <div class="input-group">
+									  <div class="input-group-prepend">
+									    <span class="input-group-text" id="">Php</span>
+									  </div>
+									  <input type="number" class="form-control" style="text-align: right">
+									  <div class="input-group-append">
+									    <span class="input-group-text" id="">.00</span>
+									  </div>
+									</div>
+				                  </div>
+				                  <div class="form-group col-lg-4">
+				                    <label>Common Paid-up</label>
+				                    <div class="input-group">
+									  <div class="input-group-prepend">
+									    <span class="input-group-text" id="">Php</span>
+									  </div>
+									  <input type="number" class="form-control" style="text-align: right">
+									  <div class="input-group-append">
+									    <span class="input-group-text" id="">.00</span>
+									  </div>
+									</div>
+				                  </div>
+
+				                  <div class="form-group col-lg-3">
+				                    <label>BIR TIN No.</label>
+				                    <input type="number" class="form-control">
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label>Contact Person</label>
+				                    <input type="text" class="form-control">
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label>Contact No.</label>
+				                    <div class="input-group">
+									  <div class="input-group-prepend">
+									    <span class="input-group-text" id="">+639</span>
+									  </div>
+									  <input type="number" class="form-control">
+									</div>
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label>Email Address</label>
+				                    <input type="text" class="form-control">
+				                  </div>
+
+				                  <div class="form-group col-lg-12">
+				                    <label>Business Activity</label>
+				                    <textarea class="form-control"></textarea>
+				                  </div>
+
+			                  </div>
+						  </div>
+
+						  <div class="tab">
+						    
+			                  <legend>
+			                  	<h6 class="text-center text-success">
+			                  		<strong>COOPERATIVE MEMBER</strong>
+			                  	</h6>
+			                  </legend>
+			                  <div class="row">
+			                	<div class="col-lg-12 table-responsive">
+				              	  	<caption>Cooperators Information</caption>
+				              	  	<table class="table table-hover table-sm">
+				              	  		<thead>
+				              	  			<tr>
+				              	  				<th>Full Name</th>
+				              	  				<th>Position</th>
+				              	  				<th>Birth date</th>
+				              	  				<th>Contact No.</th>
+				              	  				<th>Options</th>
+				              	  			</tr>
+				              	  		</thead>
+				              	  		<tbody>
+				              	  			<!-- SAMPLE DATA -->
+				              	  			<tr>
+				              	  				<td>Nhor Khaleyda Domaot</td>
+				              	  				<td>Chairperson</td>
+				              	  				<td>02/21/1995</td>
+				              	  				<td>+639504871832</td>
+				              	  				<td>
+				              	  					<button class="btn btn-outline-warning" data-toggle="modal" data-target="#editMembCoop">Edit</button>
+				              	  					<button class="btn btn-outline-danger" data-toggle="modal" data-target="#removeMembCoop">Remove</button>
+				              	  				</td>
+				              	  			</tr>
+				              	  		</tbody>
+				              	  	</table>
+
+				              		<button class="btn btn-success btn-outline-success" data-toggle="modal" data-target="#addMembCoop">Add Member</button>
+			                	</div>
+
+			              	  </div>
+						  </div>
+
+						  <div class="tab">
+			                  <legend>
+			                  	<h6 class="text-center text-success">
+			                  		<strong>COOPERATIVE SUMMARY</strong>
+			                  	</h6>
+			                  </legend>
+
+
+			                  <div class="row">
+							  	  <div class="form-group col-lg-9">
+							  	  	<label>Cooperative Name</label>
+				                    <input type="text" class="form-control" 
+				                    value="Sindaw o mga Isda sa Ranao Coop" readonly>
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label for="clasIndc">Date of Registration</label>
+				                    <input type="date" class="form-control" value="2018/02/21" readonly="">
+				                  </div>
+
+
+			                  	<div class="form-group col-lg-3">
+			                  		<label>Agency Partnership</label>
+					                <input list="agencies" name="agency" class="form-control" value="Department of Agriculture" readonly>
+			                	</div>
+			                  	<div class="form-group col-lg-3">
+			                  		<label>Province</label>
+					                <input list="provinces" name="province" class="form-control" value="Lanao del Sur" readonly>
+			                	</div>
+			                  	<div class="form-group col-lg-3">
+			                  		<label>Municipality</label>
+					                <input list="municipals" name="municipal" class="form-control" value="Binidayan" readonly>
+			                	</div>
+			                  	<div class="form-group col-lg-3">
+			                  		<label>Barangay</label>
+					                <input list="brgys" name="brgy" class="form-control" value="Olama" readonly>
+			                	</div>
+
+							  	  <div class="form-group col-lg-2">
+							  	  	<label>Type of Cooperative</label>
+					                <input list="typesCoop" name="typeCoop" class="form-control" placeholder="Multi-Purpose"  readonly> 
+									<datalist id="typesCoop">
+									  <option value="Advocacy">
+									  <option value="Agrarian Reform">
+									  <option value="Consumer">
+									  <option value="Cooperative">
+									  <option value="Credit">
+									  <option value="Dairy">
+									  <option value="Education">
+									  <option value="Electric">
+									  <option value="Financial Service">
+									  <option value="Fishermen">
+									  <option value="Health Services">
+									  <option value="Housing">
+									  <option value="Insurance">
+									  <option value="Marketing">
+									  <option value="Multi-Purpose">
+									  <option value="Others">
+									  <option value="Producers">
+									  <option value="Service">
+									  <option value="Transport">
+									  <option value="Water Service">
+									  <option value="Workers">
+									</datalist>
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label for="cost">Classification</label>
+				                    <input type="number" class="form-control" id="cost" placeholder="Enter Classification" readonly>
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label for="cost">Category</label>
+				                    <input type="number" class="form-control" id="cost" placeholder="Enter Category" readonly>
+				                  </div>
+							  	  <div class="form-group col-lg-2">
+							  	  	<label>No. of Amendments</label>
+				                    <input type="number" class="form-control" value="1" readonly>
+				                  </div>
+							  	  <div class="form-group col-lg-2">
+							  	  	<label>Status</label>
+				                    <select class="form-control" readonly>
+				                    	<option selected>Complete</option>
+				                    </select>
+				                  </div>
+
+				                  <div class="form-group col-lg-6">
+				                    <label>Board Members</label>
+					                    <div class="input-group">
+										  <input class="form-control" placeholder="No. of Male" value="2 Male" readonly>
+										  <input class="form-control" placeholder="No. of Female" value="3 Female" readonly>
+										  <input type="number" class="form-control" placeholder="Total" value="5" readonly>
+										</div>
+				                  </div>
+				                  <div class="form-group col-lg-6">
+				                    <label>Cooperative Members</label>
+					                    <div class="input-group">
+										  <input class="form-control" placeholder="No. of Male" value="1 Male" readonly>
+										  <input class="form-control" placeholder="No. of Female" value="5 Female" readonly>
+										  <input type="number" class="form-control" placeholder="Total" value="6" readonly>
+										</div>
+				                  </div>
+
+				                  <div class="form-group col-lg-4">
+				                    <label>Common Authorized</label>
+				                    <div class="input-group">
+									  <div class="input-group-prepend">
+									    <span class="input-group-text" id="">Php</span>
+									  </div>
+									  <input type="number" class="form-control" style="text-align: right" value="60000" readonly>
+									  <div class="input-group-append">
+									    <span class="input-group-text" id="">.00</span>
+									  </div>
+									</div>
+				                  </div>
+				                  <div class="form-group col-lg-4">
+				                    <label>Common Subscribed</label>
+				                    <div class="input-group">
+									  <div class="input-group-prepend">
+									    <span class="input-group-text" id="">Php</span>
+									  </div>
+									  <input type="number" class="form-control" style="text-align: right" value="15000" readonly>
+									  <div class="input-group-append">
+									    <span class="input-group-text" id="">.00</span>
+									  </div>
+									</div>
+				                  </div>
+				                  <div class="form-group col-lg-4">
+				                    <label>Common Paid-up</label>
+				                    <div class="input-group">
+									  <div class="input-group-prepend">
+									    <span class="input-group-text" id="">Php</span>
+									  </div>
+									  <input type="number" class="form-control" style="text-align: right" value="15000" readonly>
+									  <div class="input-group-append">
+									    <span class="input-group-text" id="">.00</span>
+									  </div>
+									</div>
+				                  </div>
+
+				                  <div class="form-group col-lg-3">
+				                    <label>BIR TIN No.</label>
+				                    <input type="number" class="form-control" value="123-567-890" readonly>
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label>Contact Person</label>
+				                    <input type="text" class="form-control" value="Angie Doof" readonly>
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label>Contact No.</label>
+				                    <div class="input-group">
+									  <div class="input-group-prepend">
+									    <span class="input-group-text" id="">+639</span>
+									  </div>
+									  <input type="number" class="form-control" value="504871832" readonly>
+									</div>
+				                  </div>
+				                  <div class="form-group col-lg-3">
+				                    <label>Email Address</label>
+				                    <input type="text" class="form-control" value="nkod123@gmail.com" readonly>
+				                  </div>
+
+				                  <div class="form-group col-lg-12">
+				                    <label>Business Activity</label>
+				                    <textarea class="form-control" readonly>Tilapia culture in fish cage</textarea>
+				                  </div>
+
+			                  </div>
+
+						    
+			                  <div class="row">
+			                	<div class="col-lg-12 table-responsive">
+				              	  	<caption>Cooperative Members</caption>
+				              	  	<table class="table table-hover table-sm">
+				              	  		<thead>
+				              	  			<tr>
+				              	  				<th>Full Name</th>
+				              	  				<th>Position</th>
+				              	  				<th>Birth date</th>
+				              	  				<th>Contact No.</th>
+				              	  			</tr>
+				              	  		</thead>
+				              	  		<tbody>
+				              	  			<!-- SAMPLE DATA ONLY-->
+				              	  			<tr>
+				              	  				<td>Nhor Khaleyda Domaot</td>
+				              	  				<td>Chairperson</td>
+				              	  				<td>02/21/1995</td>
+				              	  				<td>+639504871832</td>
+				              	  			</tr>
+				              	  			<tr>
+				              	  				<td>Sample One</td>
+				              	  				<td>Vice Chairperson</td>
+				              	  				<td>02/21/1995</td>
+				              	  				<td>+639504871832</td>
+				              	  			</tr>
+				              	  		</tbody>
+				              	  	</table>
+
+			                	</div>
+
+			              	  </div>
+
+						  </div> <!-- END SUMMARY TAB -->
+
+		                <!-- <div class="row">
+		                   -->
+
+		                <!-- BUTTON NEXT PREV -->
+						  <div style="overflow:auto;">
+						    <div style="float:right;">
+						      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+						      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+						    </div>
+						  </div>
+		                  <!-- Circles which indicates the steps of the form: -->
+						  <div style="text-align:center;margin-top:40px;">
+						    <span class="step"><br> <strong>1</strong></span>
+						    <span class="step"><br> <strong>2</strong></span>
+						    <span class="step"><br> <strong>3</strong></span>
+						  </div>
+
+		              </form>
+				          <p style="color: gray" class="text-center">
+				          	<strong style="color: gray">1</strong> Cooperative Information
+				          	<strong style="color: gray">2</strong> Cooperative Members
+				          	<strong style="color: gray">3</strong> Cooperative Summary
+				          </p>
+		            </div>
+
+		          </div>
+
+		        </div>
+		        <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
+		      </div>
+		      <!-- Example DataTables Card-->
+
+
+
+			      <!-- TRY FOR TABLES ONLY-->
+				<div class="card mb-3">
+			        <div class="card-header">
+			          <i class="fa fa-tasks"></i> List of Cooperatives
+			      	</div>
+			        <div class="card-body">
+			        	<!-- TABLE -->
+			        	<div class="row">
+				            <div class="p-4 col-lg-12 table-responsive">
+				                <!-- <div class="col-lg-3 float-right"> -->
+				                  
+		                          <div class="input-group col-sm-5 float-right">
+		                            <select class="custom-select col-sm-4 text-success" id="inputGroupSelect01">
+		                              <option selected>- Select Year -</option>
+		                              <option>2018</option>
+		                              <option>2017</option>
+		                              <option>2016</option>
+		                              <option>2015</option>
+		                              <option>2014</option>
+		                            </select>
+		                            
+		                            <input type="text" class="form-control" aria-label="...">
+		                            <div class="input-group-append">
+		                              <button class="btn btn-success" type="button">
+		                                <i class="fa fa-fw fa-search"></i>
+		                              </button>
+		                            </div>
+		                         </div>
+
+				                <!-- </div> --><br><br>
+				                <table class="table table-hover table-sm"> 
+				                  <tr style="background-color: #ffffbf;">
+				                    <th>Project</th>
+				                    <th>Partnership Agency</th>
+				                    <th>Chairman</th>
+				                    <th>Status</th>
+				                    <th>Actions</th>
+				                  </tr>
+				                  <tr class="bg-light">
+				                    <td>Sindaw o mga Isda sa Ranao Coop</td>
+				                    <td>Department Of Agriculture</td>
+				                    <td>Nhor Khaleyda Domaot</td>
+				                    <td>Completed</td>
+				                    <td>
+				                        <button type="button" class="btn btn-success">View</button>
+				                    </td>
+				                  </tr>
+				                </table>
+				            </div>
+				        	<!-- TABLE END -->
+			        	</div>
+			        </div>
+			    </div>
+
+
+
+		    </div>
+
+
+
+
+
+<br><br><br><br>
+
+
+		</div>
+		<!-- End Page CONTENT -->
+	</div>
+
+	<!-- FOOTER -->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © ARMM Information Management System 2018</small>
+        </div>
+      </div>
+    </footer>
+
+</body>
+
+<!-- Angular Libraries -->
+<script type="text/javascript" src="../../lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="../../lib/angular/angular-route.min.js"></script>
+<script type="text/javascript" src="../../lib/app.js"></script>
+<script type="text/javascript" src="../../lib/js/data.js"></script>
+<!-- Js files -->
+<script type="text/javascript" src="../../lib/js/loginCtrl.js"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="../../lib/vendor/jquery/jquery.min.js"></script>
+<script src="../../lib/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="../../lib/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="../../lib/vendor/chart.js/Chart.min.js"></script>
+<script src="../../lib/vendor/datatables/jquery.dataTables.js"></script>
+<script src="../../lib/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="../../lib/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="../../lib/js/sb-admin-datatables.min.js"></script>
+<script src="../../lib/js/sb-admin-charts.min.js"></script>
+<!-- My JS -->
+<script src="../../lib/js/myjs.js"></script>
+<script src="../../lib/js/aims.js"></script>
+
+<!-- Select2 -->
+<script src="../../lib/select/select2.full.min.js"></script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+  })
+</script>
+</html>
+
+
+
+
+
+
+<!-- MODALS -->
+
+
+
+<!-- NEW MEMBER COOP -->
+<div class="modal fade" tabindex="-1" role="dialog" id="addMembCoop">
+  <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h5 class="modal-title">Cooperative Member Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <i>Please fill in all required information (*)</i>
+        <div class="row">
+          <div class="form-group col-lg-4">
+          	<label>First name</label><span style="color: red;">*</span>
+            <input type="text" class="form-control" placeholder="Enter First name">
+          </div>
+          <div class="form-group col-lg-4">
+          	<label>Middle name</label>
+            <input type="text" class="form-control" placeholder="Enter Middle name">
+          </div>
+          <div class="form-group col-lg-4">
+          	<label>Last name</label><span style="color: red;">*</span>
+            <input type="text" class="form-control" placeholder="Enter Last name">
+          </div>
+
+          <div class="form-group col-lg-3">
+          	<label>Position</label><span style="color: red;">*</span>
+          	<select class="form-control">
+          		<option>- Select -</option>
+          		<option>Chairperson</option>
+          		<option>Vice Chairperson</option>
+          		<option>Treasurer</option>
+          		<option>Secretary</option>
+          		<option>General Manager</option>
+          		<option>Member</option>
+          	</select>
+          </div>
+          <div class="form-group col-lg-3">
+          	<label>Birth Date</label><span style="color: red;">*</span>
+          	<input type="date" class="form-control">
+          </div>
+          <div class="form-group col-lg-2">
+          	<label>Gender</label><span style="color: red;">*</span>
+          	<select class="form-control">
+          		<option>- Select -</option>
+          		<option>Female</option>
+          		<option>Male</option>
+          	</select>
+          </div>
+		  <div class="form-group col-lg-4">
+			<label>Contact No.</label>
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="">+639</span>
+				</div>
+				<input type="number" class="form-control">
+			</div>
+		  </div>
+
+      	<div class="form-group col-lg-3">
+			<label>Province</label>
+			<input list="provinces" name="province" class="form-control" placeholder="- Select/Type -">
+			<datalist id="provinces">
+				<option value="Basilan">
+				<option value="Lanao del Sur">
+				<option value="Maguindanao">
+				<option value="Sulu">
+				<option value="Tawi-Tawi">
+			</datalist>
+		</div>
+		<div class="form-group col-lg-3">
+			<label>Municipality</label>
+			<input list="municipals" name="municipal" class="form-control" placeholder="- Select/Type -">
+			<datalist id="municipals">
+				<option value="Amai Manabilang">
+				<option value="Bacolod-Kalawi">
+				<option value="Balabagan">
+				<option value="Balindong">
+				<option value="Bayang">
+				<option value="Binidayan">
+				<option value="Buadiposo-Buntong">
+				<option value="Bubong">
+				<option value="Butig">
+			</datalist>
+		</div>
+		<div class="form-group col-lg-3">
+			<label>Barangay</label>
+			<input list="brgys" name="brgy" class="form-control" placeholder="- Select/Type -">
+			<datalist id="brgys">
+				<option value="Badak">
+				<option value="Basak">
+				<option value="Maindig">
+				<option value="Olama">
+			</datalist>
+		</div>
+          <div class="form-group col-lg-3" id="courseCoopMemb">
+          	<label>Street/House No.</label>
+            <input type="text" class="form-control" placeholder="Enter St., House no.">
+          </div>
+
+          <div class="form-group col-lg-4">
+          	<label>Educational Attainment</label><span style="color: red;">*</span>
+          	<select class="form-control">
+          		<option>- Select -</option>
+          		<option>None</option>
+          		<option>Elementary</option>
+          		<option>Junior High School</option>
+          		<option>Senior High School</option>
+          		<option>College</option>
+          		<option>TESDA</option>
+          	</select>
+          </div>
+          <div class="form-group col-lg-8" id="courseCoopMemb">
+          	<label>Course</label>
+            <input type="text" class="form-control" placeholder="Enter Course">
+          </div>
+
+          <div class="form-group col-lg-3" id="">
+          	<label>Occupation</label>
+            <input type="text" class="form-control" placeholder="Enter Occupation">
+          </div>
+          <div class="form-group col-lg-5" id="">
+          	<label>Occupation Address</label>
+            <input type="text" class="form-control" placeholder="Bldg. No., Brgy., City/Municipality, Province">
+          </div>
+          <div class="form-group col-lg-4" id="">
+          	<label>Monthly Salary</label>
+          	<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="">Php</span>
+				</div>
+				<input type="number" class="form-control" style="text-align: right">
+				<div class="input-group-append">
+					<span class="input-group-text" id="">.00</span>
+				</div>
+			</div>
+          </div>
+
+
+          <div class="form-group col-lg-3">
+          	<label>Spouse Name</label>
+            <input type="text" class="form-control" placeholder="Enter Spouse Name">
+          </div>
+          <div class="form-group col-lg-5" id="">
+          	<label>Spouse Occupation</label>
+            <input type="text" class="form-control" placeholder="Bldg. No., Brgy., City/Municipality, Province">
+          </div>
+          <div class="form-group col-lg-4" id="">
+          	<label>Spouse Monthly Salary</label>
+          	<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="">Php</span>
+				</div>
+				<input type="number" class="form-control" style="text-align: right">
+				<div class="input-group-append">
+					<span class="input-group-text" id="">.00</span>
+				</div>
+			</div>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- EDIT MEMBER COOP -->
+<!-- FILTER MODAL -->
+<div class="modal fade" tabindex="-1" role="dialog" id="editMembCoop">
+  <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Individual Beneficiary</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <i>Please fill in all required information</i>
+        <div class="row">
+          <div class="form-group col-lg-4">
+          	<label>First name</label><span style="color: red;">*</span>
+            <input type="text" class="form-control" placeholder="Enter First name">
+          </div>
+          <div class="form-group col-lg-4">
+          	<label>Middle name</label>
+            <input type="text" class="form-control" placeholder="Enter Middle name">
+          </div>
+          <div class="form-group col-lg-4">
+          	<label>Last name</label><span style="color: red;">*</span>
+            <input type="text" class="form-control" placeholder="Enter Last name">
+          </div>
+
+          <div class="form-group col-lg-4">
+          	<label>Gender</label><span style="color: red;">*</span>
+          	<select class="form-control">
+          		<option>- Select -</option>
+          		<option>Female</option>
+          		<option>Male</option>
+          	</select>
+          </div>
+          <div class="form-group col-lg-4">
+          	<label>Birth Day</label><span style="color: red;">*</span>
+          	<input type="date" class="form-control">
+          </div>
+          <div class="form-group col-lg-4">
+          	<label>Source of Income</label>
+            <input type="text" class="form-control" placeholder="Enter Livelihood">
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- LIST OF PROJECT MODALS -->
+
+<!-- VIEW PROJECT INFO MODAL -->
+<div class="modal fade" tabindex="-1" role="dialog" id="viewProjInfo">
+  <div class="modal-dialog modal-lg  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Project Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+                  <div class="form-group col-lg-12">
+                    <label for="titleProj">Project Name</label>
+                    <input type="text" class="form-control" id="titleProj" aria-describedby="emailHelp" value="PAMANA" readonly>
+                  </div>
+                  <div class="form-group col-lg-4">
+                    <label for="typeIndc">Implementing Agency</label>
+                    <select class="form-control" id="typeIndc" readonly>
+                      <option>- Select -</option>
+                      <option selected="">Department of Agriculture</option>
+                      <option>Department of Agrarian Reform</option>
+                      <option>Department of Education</option>
+                      <option>Department of Health</option>
+                      <option>Department of Social Welfare and Development</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-lg-4">
+                    <label for="cost">Cost</label>
+                    <input type="number" class="form-control" id="cost" value="20520000" readonly>
+                  </div>
+                  <div class="form-group col-lg-4">
+                    <label>Status</label>
+                    <select class="form-control">
+                    	<option selected>On going</option>
+                    	<option>Planning</option>
+                    	<option>Done</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="col-lg-12 table-responsive">
+                      <label for="table">Enrolled Beneficiaries</label>
+                      <table class="table table-hover table-sm" id="table">
+                        <thead>
+                          <tr style="background-color: #ffffbf;">
+                            <th>Name</th>
+                            <th>Barangay</th>
+                            <th>Municipality</th>
+                            <th>Province</th>
+                            <th>Type of Beneficiary</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Faiz Abdullah</td>
+                            <td>Mayaman</td>
+                            <td>Marogong</td>
+                            <td>Lanao del Sur</td>
+                            <td>Individual</td>
+                          </tr>
+                          <tr>
+                            <td>Rana Datu-olama</td>
+                            <td>Suldaroro</td>
+                            <td>Binidayan</td>
+                            <td>Lanao del Sur</td>
+                            <td>Individual</td>
+                          </tr>
+                          <tr>
+                            <td>Palapa Makers Cooperative</td>
+                            <td>Campo Muslim</td>
+                            <td>Malabang</td>
+                            <td>Lanao del Sur</td>
+                            <td>Cooperative</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#viewProjInfoSave">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ADD BEN PROJ MODAL -->
+<div class="modal fade" tabindex="-1" role="dialog" id="viewProjInfoSave">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Are you sure you want to save the changes made on the information of this project?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#viewProjInfoSaveYes">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#viewProjInfo">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ADD BEN PROJ MODAL -->
+<div class="modal fade" tabindex="-1" role="dialog" id="viewProjInfoSaveYes">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" align="center">
+        <p>You have successfuly saved the changes made on the information of this project.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- PLOT PROJ MODAL -->
+<div class="modal fade" tabindex="-1" role="dialog" id="plotProj">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Plot the location of the Project</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <i>Please provide the centroids of the project.</i>
+        <div class="row">
+          <div class="form-group col-lg-6">
+            <label>Latitude</label>
+            <input type="text" placeholder="Enter the value" class="form-control">
+          </div>
+          <div class="form-group col-lg-6">
+            <label>Longitude</label>
+            <input type="text" placeholder="Enter the value" class="form-control">
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#plotProjSave">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#plotProjCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ADD BEN PROJ MODAL -->
+<div class="modal fade" tabindex="-1" role="dialog" id="plotProjSave">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Are you sure you want to plot the location of this project?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#plotProjSaveYes">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#plotProj">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ADD BEN PROJ MODAL -->
+<div class="modal fade" tabindex="-1" role="dialog" id="plotProjSaveYes">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" align="center">
+        <p>You have successfuly plotted the location of this project.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ADD Modal -->
+<div class="modal fade" id="enrollBenProj" tabindex="-1" role="dialog" aria-labelledby="enrollBenLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addIndicatorLabel">Add Beneficiaries</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="form-group col-lg-3">
+              <label for="typeIndc">Type of Beneficiary</label>
+              <select class="form-control" id="typeIndc">
+                <option>- Select -</option>
+                <option>Barangay</option>
+                <option>Cooperative</option>
+                <option>Individual</option>
+              </select>
+            </div>
+            <div class="form-group col-lg-3">
+              <label for="typeIndc">Province</label>
+              <select class="form-control" id="typeIndc">
+                <option>- Select -</option>
+                <option>All</option>
+                <option>Basilan</option>
+                <option>Maguindanao</option>
+                <option>Lanao del Sur</option>
+                <option>Sulu</option>
+                <option>Tawi-Tawi</option>
+              </select>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="typeIndc">Municipality</label>
+              <select class="form-control" id="typeIndc">
+                <option>- Select -</option>
+                <option>All</option>
+                <option>Akbar</option>
+                <option>Al -Barka</option>
+                <option>Hadji Mohammad Ajul</option>
+                <option>Hadji Muhtamad</option>
+                <option>Isabela de basilan</option>
+                <option>Lamitan</option>
+                <option>Lantawan</option>
+                <option>Maluso</option>
+                <option>Sumisip</option>
+                <option>Tabuan -Lasa</option>
+                <option>Tipo -Tipo</option>
+                <option>Tuburan</option>
+                <option>Ungkaya Pukan</option>
+              </select>
+            </div>
+            <div class="col-lg-2">
+              <label>_</label>
+              <button class="btn btn-outline-success btn-block">GO</button>
+            </div>
+
+
+            <div class="col-lg-12 table-responsive">
+              <label for="table">Result</label>
+              <table class="table table-hover table-sm" id="table">
+                <thead>
+                  <tr style="background-color: #ffffbf;">
+                    <th></th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Barangay</th>
+                    <th>Municipality</th>
+                    <th>Province</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="checkbox" value=""></td>
+                    <td>Faiz Abdullah</td>
+                    <td>29</td>
+                    <td>Mayaman</td>
+                    <td>Marogong</td>
+                    <td>Lanao del Sur</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" value=""></td>
+                    <td>Rana Datu-olama</td>
+                    <td>29</td>
+                    <td>Suldaroro</td>
+                    <td>Binidayan</td>
+                    <td>Lanao del Sur</td>
+                  </tr>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" value=""></td>
+                    <td>Sittie Asnaifa Timbol</td>
+                    <td>29</td>
+                    <td>Campo Muslim</td>
+                    <td>Malabang</td>
+                    <td>Lanao del Sur</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="col-lg-12">
+          <button type="button" class="btn btn-success float-left col-lg-3" data-dismiss="modal" data-toggle="modal" data-target="#enrollBenProjSubmit">Submit</button>
+          <div class="col-lg-5"></div>
+          <button type="button" class="btn btn-danger float-right col-lg-3" data-dismiss="modal" data-toggle="modal" data-target="#enrollBenProjCancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- CONFIRMATION DIALOG -->
+<!-- NEW PROJ MODAL -->
+<div class="modal" tabindex="-1" role="dialog" id="enrollBenProjSubmit">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Are you sure you want to enroll the new beneficiaries to this project?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#enrollBenProjSubmitYes">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#enrollBenProj">No</button>
+      </div>
+    </div>
+  </div>
+</div>          
+
+<!-- NEW PROJ MODAL -->
+<div class="modal" tabindex="-1" role="dialog" id="enrollBenProjSubmitYes">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" align="center">
+        <p>You have successfuly enrolled the beneficiaries to the project.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- CANCEL PROJ MODAL -->
+<div class="modal" tabindex="-1" role="dialog" id="cancelNewProj">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Are you sure you want to add the new beneficiary?</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-success" href="projects.php">Yes</a>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- LIST OF PROJECT MODALS END -->

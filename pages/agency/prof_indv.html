@@ -1,0 +1,993 @@
+<!-- <style>
+/** {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}*/
+
+.card-header{
+    color: #00441b;
+}
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
+    color: #ffff00 !important;
+    background-color: #003314;
+}
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav li:hover a {
+    color: #ffffbf !important;
+}
+
+/*#regForm_Profile {
+  background-color: #ffffff;
+  
+  font-family: Raleway;
+
+
+}*/
+
+h1 {
+  text-align: center;  
+}
+
+/*input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}*/
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
+</style> -->
+
+<!DOCTYPE html>
+<html ng-app="myApp" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>AIMS</title>
+  <link rel="icon" type="image/png" href="../../image/icon.png" sizes="32x32">
+    <!-- Bootstrap core CSS-->
+  <link href="../../lib/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+  <link href="../../lib/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+  <link href="../../lib/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+  <link href="../../lib/css/sb-admin.css" rel="stylesheet">
+    <!-- My Stylesheet -->
+  <link href="../../lib/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"  style="background-color: #00441b;">
+        <a class="navbar-brand" href="../index.html" style="color: #ffff00; font-size: 16px;">
+          <img src="../../image/navlogo.png" alt="..." class="rounded-circle" style="height: 30px;">
+           ARMM Information Management System
+      </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- SIDEBAR -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav navbar-sidenav" id="exampleAccordion" style="background-color: #00441b;">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
+                  <a class="nav-link" href="../dashboard.html">
+                    <i class="fa fa-fw fa-home"></i>
+                    <span class="nav-link-text">Home</span>
+                  </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profiling">
+                  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="nav-link-text">Profiling</span>
+                  </a>
+                  <ul class="sidenav-second-level collapse" id="collapseExamplePages" style="background-color: #003314;">
+                    <li><a href="prof_brgy.html">Barangay</a></li>
+                    <li><a href="prof_coop.html">Cooperative</a></li>
+                    <li class="active"><a href="prof_indv.html">Individual</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reports" >
+                  <a class="nav-link" href="reports.html">
+                    <i class="fa fa-fw fa-bar-chart"></i>
+                    <span class="nav-link-text">Reports</span>
+                  </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Mapping">
+                  <a class="nav-link" href="mapping.html">
+                    <i class="fa fa-fw fa-map-marker"></i>
+                    <span class="nav-link-text">Mapping</span>
+                  </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projects" >
+                  <a class="nav-link" href="projects.html">
+                    <i class="fa fa-fw fa-tasks"></i>
+                    <span class="nav-link-text">Projects</span>
+                  </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Indicators" >
+                  <a class="nav-link" href="addIndicator.html">
+                    <i class="fa fa-fw fa-plus-circle"></i>
+                    <span class="nav-link-text">Indicators</span>
+                  </a>
+                </li>
+              </ul>
+              <ul class="navbar-nav sidenav-toggler" style="background-color: #003314;">
+                <li class="nav-item">
+                  <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                  </a>
+                </li>
+              </ul>
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Username
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+                    <a class="dropdown-item" data-toggle="modal" data-target="#userProfile">
+                      <i class="fa fa-fw fa-user"></i>User Profile
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">
+                      <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+          </div>
+      </nav>
+
+      <br><br>
+    <!-- Page CONTENT -->
+    <div class="content-wrapper">
+        <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Form</a>
+        </li>
+        <li class="breadcrumb-item active">Barangay</li>
+      </ol>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- Example Bar Chart Card-->
+
+          <!-- Physical Information -->
+          <div class="card mb-3" id="brgyPhysical">
+            <div class="card-header">
+              <i class="fa fa-file-text-o"></i> Individual Form
+            </div>
+            <div class="card-body">
+              <div class="row">
+                   <div class="p-4 col-lg-12 table-responsive">         
+                            <form id="regForm_Profile" method="post">
+                              <!-- One "tab" for each step in the form: -->
+                              <div class="tab">
+                                 <legend>
+                                     <h6 class="text-center text-success">
+                                     <strong>BASIC INFORMATION</strong>
+                                     </h6>
+                                  </legend>
+                                <div class="row">
+                                                <div class="form-group col-md-4">
+                                                           <label>First Name</label>
+                                                            <input type="text" class="form-control" name="">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                          <label >Middle Name</label>
+                                                          <input type="text" class="form-control" name=""> 
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label >Last Name</label>
+                                                    <input type="text" class="form-control" name="">
+                                                </div>
+                                                 <div class='form-group col-sm-3'>
+                                                        <label style="font-size: 13px;">Date of Birth</label>
+                                                          <div class="input-group">
+                                                              <input type="date" class="form-control" >
+                                                              <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-fw fa-calendar"></i></span>
+                                                          </div>
+                                                      </div>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                          <label style="font-size: 13px;">Gender</label>
+                                                          <select class="form-control" id="selectGender" onchange="showFemale()">
+                                                             <option value="selectGen">- Select -</option>
+                                                             <option value="female">Female</option>
+                                                             <option value="male">Male</option>
+                                                          </select>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                          <label style="font-size: 13px;">Civil Status</label>
+                                                          <select class="form-control">
+                                                             <option>- Select -</option>
+                                                             <option>Single</option>
+                                                             <option>Married</option>
+                                                             <option>Widow</option>
+                                                          </select>
+                                                </div>
+                                                <div class="form-group col-md-3 mb-3">
+                                                          <label style="font-size: 13px;">Religion</label>
+                                                          <select class="form-control">
+                                                             <option>- Select -</option>
+                                                             <option>Islam</option>
+                                                             <option>Catholic</option>
+                                                             <option>INC</option>
+                                                             <option>Protestatnt</option>
+                                                          </select>
+                                                </div>
+                                              
+                                                <!-- <div class="form-group col-md-3">
+                                                  <label>Skill/s</label>
+                                                  <input type="text" class="form-control" name="">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                  <label>Certificate/Recognition</label>
+                                                  <input type="text" class="form-control" name="">
+                                                </div>
+                                                <div class='form-group col-sm-3'>
+                                                        <label style="font-size: 13px;">Date</label>
+                                                          <div class="input-group">
+                                                              <input type="date" class="form-control" >
+                                                              <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-fw fa-calendar"></i></span>
+                                                              </div>
+                                                           </div>
+                                                </div> -->
+                                                <div class="table-responsive col-md-12" style="display: block;">
+                                                     <table border="1" class="table table-hover table-sm" >
+                                                            <thead >
+                                                              <tr>
+                                                                <th>Skill/s</th>
+                                                                 <th>Certificate/Recognition</th>
+                                                                <th>Date</th>
+                                                              </tr>
+                                                            </thead>
+                                                            <tbody id="tableSkill"> 
+                                                              <tr>
+                                                                <td><input type="text" class="form-control" name="" placeholder="Enter Purok Name" id="myInput"></td>
+                                                                <td>
+                                                                  <input type="text" class="form-control" name="">
+                                                                </td>
+                                                                <td>
+                                                                  <div class="input-group">
+                                                                        <input type="date" class="form-control" >
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text" id="basic-addon1"><i class="fa fa-fw fa-calendar"></i></span>
+                                                                        </div>
+                                                                  </div>
+                                                                </td>
+                                                              </tr>
+                                                            </tbody>
+                                                    </table> 
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                  <label>Occupation</label>
+                                                  <input type="text" class="form-control" name="">
+                                                </div>
+                                                    <div class="form-group col-md-3">
+                                                  <label>Type of income</label>
+                                                  <select class="form-control">
+                                                    <option>Earned Income</option>
+                                                    <option>Portfolio Income</option>
+                                                    <option>Passive Income</option>
+                                                  </select>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                  <label>Income Amount</label>
+                                                  <input type="Number" class="form-control" name="">
+                                                </div>
+                                                <div class="col-md-12">
+                                                  <label>Occupation Address</label>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                  <label style="font-size: 13px;">Street </label>
+                                                  <input type="text" name="" class="form-control" placeholder="House/Block/Lot No. , Street, Subdivision/ Village">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label style="font-size: 13px;">Barangay</label>
+                                                      <select class="form-control">
+                                                             <option>- Select -</option>
+                                                      </select>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label style="font-size: 13px;">Municipality</label>
+                                                      <select class="form-control">
+                                                             <option>- Select -</option>
+                                                      </select>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label style="font-size: 13px;">Province</label>
+                                                      <select class="form-control">
+                                                             <option>- Select -</option>
+                                                      </select>
+                                                </div>
+                                                <div class="col-md-12">
+                                                          <legend>
+                                                             <h6 class="text-left text-success">
+                                                             <strong>Contact Information</strong>
+                                                             </h6>
+                                                          </legend>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                  <label>Home Address</label>
+                                                </div>
+                                                 <div class="form-group col-md-3">
+                                                  <label style="font-size: 13px;">Street </label>
+                                                  <input type="text" name="" class="form-control" placeholder="House/Block/Lot No. , Street, Subdivision/ Village">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label style="font-size: 13px;">Barangay</label>
+                                                      <select class="form-control">
+                                                             <option>- Select -</option>
+                                                      </select>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label style="font-size: 13px;">Municipality</label>
+                                                      <select class="form-control">
+                                                             <option>- Select -</option>
+                                                      </select>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label style="font-size: 13px;">Province</label>
+                                                      <select class="form-control">
+                                                             <option>- Select -</option>
+                                                      </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                  <label style="font-size: 13px;">Contact Number</label>
+                                                  <input type="Number" class="form-control" name="">
+                                                </div>
+                                                <div class="form-group col-md-6 mb-3">
+                                                  <label style="font-size: 13px;">E-mail Address</label>
+                                                  <input type="text" class="form-control" name="">
+                                                </div>
+                                                <div class="col-md-12">
+                                                          <legend>
+                                                             <h6 class="text-left text-success">
+                                                             <strong>Family Background</strong>
+                                                             </h6>
+                                                          </legend>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label style="font-size: 13px;">No. of Household</label>
+                                                    <input type="Number" class="form-control" name="">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label style="font-size: 13px">Total No. of Male</label>
+                                                    <input type="Number" class="form-control" name="">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label style="font-size: 13px">Total No. of Female</label>
+                                                    <input type="Number" class="form-control" name="">
+                                                </div>
+                                                <!-- <div class="form-group col-md-6">
+                                                  <label>Quantity</label><input type="text" id="qty" name="qty" />
+                                                  <div id="newFields"></div>
+                                                </div> -->
+                                                <!-- <div class="form-group col-md-4">
+                                                    <label style="font-size: 13px">A Tanod</label>
+                                                    <select class="form-control">
+                                                      <option>-- Select --</option>
+                                                      <option>Yes</option>
+                                                      <option>No</option>
+                                                    </select>
+                                                </div> -->
+                                                <div class="table-responsive col-md-12" style="display: block;">
+                                                     <table border="1" class="table table-hover table-sm" >
+                                                            <thead >
+                                                              <tr>
+                                                                <th>Name</th>
+                                                                 <th>Relationship</th>
+                                                                <th>Status</th>
+                                                              </tr>
+                                                            </thead>
+                                                            <tbody id="addFamily"> 
+                                                              <tr>
+                                                                <td><input type="text" class="form-control" name="" placeholder="Enter Purok Name" id="myInput"></td>
+                                                                <td>
+                                                                  <select class="form-control">
+                                                                    <option>-- Select --</option>
+                                                                    <option>Wife</option>
+                                                                    <option>Daughter</option>
+                                                                    <option>Son</option>
+                                                                  </select>
+                                                                </td>
+                                                                <td>
+                                                                  <select class="form-control">
+                                                                    <option>-- Select --</option>
+                                                                    <option>Dependent</option>
+                                                                    <option>Independent</option>
+                                                                  </select>
+                                                                </td>
+                                                              </tr>
+                                                            </tbody>
+                                                    </table> 
+                                                </div>
+                                                <div class="col-md-12">
+                                                <button class="btn btn-success btn-outline-success" onclick="addRowFam()">Add Family Member</button> 
+                                                </div>
+                                </div>
+                              </div>
+
+
+                              
+                              <!-- Health -->
+
+                              <div class="tab">
+                                 <legend>
+                                     <h6 class="text-center text-success">
+                                     <strong>HEALTH INFORMATION</strong>
+                                     </h6>
+                                  </legend>
+                                <div class="row">
+                                    <div class='form-group col-sm-4'>
+                                        <label style="font-size: 13px;">Weigth (kg)</label>
+                                        <input type="Number" class="form-control" name="">
+                                    </div> 
+                                    <div class="form-group col-md-4">
+                                        <label style="font-size: 13px;">Height</label>
+                                        <input type="Number" class="form-control" name="">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label style="font-size: 13px;">Blood Type</label>
+                                        <input type="text" class="form-control" name="">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label style="font-size: 13px;">Nutritional Status</label>
+                                      <select class="form-control">
+                                        <option>-- Select --</option>
+                                        <option>Normal</option>
+                                        <option>Moderate Acute Malnutrition</option>
+                                        <option>Severe Acute Malnutrition</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-4" style="display: none;" id="pregnant">
+                                      <label style="font-size: 13px">Are you pregnant?</label>
+                                      <select class="form-control">
+                                        <option>-- Select --</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-4" style="display: none;" id="lactating">
+                                      <label style="font-size: 13px;">Are you lactating?</label>
+                                      <select class="form-control">
+                                        <option>-- Select --</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-4" style="display: none;" id="wra">
+                                      <label style="font-size: 13px">Women Reproductive Health</label>
+                                      <select class="form-control">
+                                        <option>-- Select --</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label style="font-size: 13px;">Has access to Sanitary water</label>
+                                        <select class="form-control">
+                                          <option>-- Select --</option>
+                                          <option>Yes</option>
+                                          <option>No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label style="font-size: 13px;">Has access to Sanitary Toilet</label>
+                                        <select class="form-control">
+                                          <option>-- Select --</option>
+                                          <option>Yes</option>
+                                          <option>No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                              </div>
+
+
+
+                              <!-- Education -->
+                              <div class="tab">
+                                 <legend>
+                                     <h6 class="text-center text-success">
+                                     <strong>EDUCATIONAL ATTAINMENT</strong>
+                                     </h6>
+                                  </legend>
+                                <div class="row">
+                                  <div class="form-group col-md-6">
+                                      <label style="font-size: 13px;">Level</label>
+                                      <select class="form-control" id="mySelect_college" onchange="selectEduc()">
+                                               <option value= "s">- Select -</option>
+                                               <option value="elem">Elementary</option>
+                                               <option value="sec">Junior High</option>
+                                               <option value="ter">Senior High</option>
+                                               <option value="col">College</option>
+                                               <option value="gra">Graduate College</option>
+                                      </select>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                      <label style="font-size: 13px;">Has Books?</label>
+                                      <select class="form-control">
+                                                            <option>-- Select --</option>
+                                                            <option>Yes</option>
+                                                            <option>No</option>
+                                                            <option>Sharing</option>
+                                                          </select>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label style="font-size: 13px">Name of School</label>
+                                    <input type="text" class="form-control" name="">
+                                  </div>
+                                  <div class="form-group col-md-3">
+                                    <label style="font-size: 13px">School ID</label>
+                                    <input type="Number" class="form-control" name="">
+                                  </div>
+                                  <div class="form-group col-md-3">
+                                    <label style="font-size: 13px">Type of School</label>
+                                    <select class="form-control">
+                                      <option>-- Select --</option>
+                                      <option>Elementary</option>
+                                      <option>Secondary</option>
+                                      <option>Tertiary</option>
+                                      <option>Graduate Schhol</option>
+                                      <option>TESDA CENTER</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-6" id="course" style="display: none">
+                                      <label style="font-size: 13px">Course</label>
+                                      <input type="text" class="form-control" name="">
+                                  </div>
+                                  <div class="form-group col-md-6" id="level" style="display: none">
+                                      <label style="font-size: 13px;">Year Level</label>
+                                      <select class="form-control">
+                                        <option>-- Select --</option>
+                                        <option>First Year</option>
+                                        <option>Second Year</option>
+                                        <option>Third year</option>
+                                        <option>Fourth year</option>
+                                        <option>Extende HAHAHAHAHAHA</option>
+                                      </select>
+                                  </div>
+                                </div>
+                              </div>
+                              
+      
+
+                              <!-- Livelihood -->
+                              <div class="tab">
+                                <legend>
+                                     <h6 class="text-center text-success">
+                                     <strong>LIVELIHOOD INFORMATION</strong>
+                                     </h6>
+                                  </legend>
+                                <div class="row">
+                                  <div class="form-group col-md-6">
+                                    <label style="font-size: 13px;">Employable (included in the labor force)</label>
+                                    <select class="form-control">
+                                      <option>-- Select --</option>
+                                      <option>Yes</option>
+                                      <option>No</option>
+                                      <option>Not Capable yet</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label style="font-size: 13px;">Major Economic Source</label>
+                                    <select class="form-control" id="mes" onchange="selectMes()">
+                                      <option value="selectmes">-- Select --</option>
+                                      <option value="agriMes">Agricultural</option>
+                                      <option value="fishMes">Fishing</option>
+                                      <option value="commMes">Commercial</option>
+                                      <option value="indusMes">Industrial</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label>Existing Organization</label>
+                                    <select class="form-control" id="eoSelect" onchange="SelectEo()">
+                                      <option value=11>-- Select --</option>
+                                      <option value=22>Cooperative</option>
+                                      <option value=33>Association</option>
+                                      <option value=44>Farmaer's organization</option>
+                                      <option value=55>FisherFolk's organization</option>
+                                      <option value=66>Others (please specifiy)</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-8" style="display: block;" id="nameOrg">
+                                    <label>Name of the Organization</label>
+                                    <input type="text" class="form-control" name="">
+                                  </div>
+                                  <div class="form-group col-md-8" style="display: none;" id="blackSpace">
+                                   
+                                  </div>
+                                  <div class="form-group col-md-4" style="display: none;" id="otherEo">
+                                    <label>If not existing organization , please specify:</label>
+                                    <input type="text" class="form-control" name="">
+                                  </div>
+                                  <div class="form-group col-md-8" style="display: none;" id="nameEo">
+                                    <label>Name of the Organization</label>
+                                    <input type="text" class="form-control" name="">
+                                  </div>
+                                  <!-- <div class="form-group col-md-6">
+                                      <label style="font-size: 13px;">Major Economic Source</label>
+                                      <input list="myDatalist" class="form-control" placeholder="Select"> 
+                                      <datalist id="myDatalist"> 
+                                        <option value="Agricultural">
+                                        <option value="Fishisg">
+                                        <option value="Commercial">
+                                        <option value="Industrial">
+                                      </datalist>
+                                  </div> -->
+                                  <div class="form-group col-md-4">
+                                      <label style="font-size: 13px;">Agricultural Land Utilized (%)</label>
+                                      <input type="number" class="form-control" name="">
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                                    <label style="font-size: 13px;">Livelihood</label>
+                                                        <select class="form-control" id="selectLivelihood" onchange="showLivelihood()">
+                                                          <option  value="select1">-- Select --</option>
+                                                          <option  value="farm">Farming</option>
+                                                          <option  value="lp">Livestock and Poultry</option>
+                                                          <option value="fish">Fishing</option>
+                                                        </select>
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                      <label style="font-size: 13px;">Are you a Tanod?</label>
+                                      <select class="form-control" id="selectTanod" onchange="showTanod()">
+                                        <option value=111>-- Select --</option>
+                                        <option value=222>Yes</option>
+                                        <option value=333>no</option>
+                                      </select>
+                                  </div>
+
+
+                                                <!-- A Farmer - Hide -->
+                                                <div style="display: none;" id="farming">
+                                                  <div class="row">
+                                                    <div class="col-md-12 " id="legendFarm">
+                                                              <legend>
+                                                                 <h6 class="text-left text-success">
+                                                                 <strong>Farmer</strong>
+                                                                 </h6>
+                                                              </legend>
+                                                    </div>
+                                                    <div class="form-group col-md-6"  id="
+                                                    cropN">
+                                                      <label style="font-size: 13px;">Crop Name</label>
+                                                      <input class="form-control" type="text" name="">
+                                                    </div>
+                                                    <div class="form-group col-md-6"  id="fertilizer">
+                                                      <label style="font-size: 13px;">What fertilizer did you use?</label>
+                                                      <input class="form-control" type="text" name="">
+                                                    </div>
+                                                    <div class="form-group col-md-6"  id="areaHas">
+                                                      <label style="font-size: 13px;">Area(Has)</label>
+                                                      <input class="form-control" type="number" name=""  placeholder="In Hectares">
+                                                    </div>
+                                                    <div class="form-group col-md-6"  id="AccesWater">
+                                                      <label style="font-size: 13px;">Access to water</label>
+                                                      <select class="form-control">
+                                                        <option>-- Select --</option>
+                                                        <option>Yes</option>
+                                                        <option>No</option>
+                                                      </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6"  id="owned">
+                                                        <label style="font-size: 13px;">is_owned?</label>
+                                                        <select class="form-control">
+                                                          <option>-- Select --</option>
+                                                          <option>Yes</option>
+                                                          <option>No</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6" id="landOwner">
+                                                      <label style="font-size: 13px">Land Owner (%)</label>
+                                                      <input class="form-control" type="number" name="">
+                                                    </div>
+
+                                                  </div>
+                                              </div>
+                                                
+                                                <!-- End of A Farmer Form -->
+
+
+                                                <!-- A Livestock and Poultry - Hide -->
+
+                                                <div class="col-md-12" style="display: none;" id="livePoultry">
+                                                  <div class="row">
+                                                    
+                                                    <div class="col-md-12 " id="legendFarm">
+                                                              <legend>
+                                                                 <h6 class="text-left text-success">
+                                                                 <strong>Livestock And Poultry</strong>
+                                                                 </h6>
+                                                              </legend>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                      <label>Total Land Area(Has)</label>
+                                                      <input type="Number" class="form-control" name="">
+                                                    </div>
+                                                    <div class="table-responsive col-md-12 mb-3">
+                                                    <table border="1" class="table table-hover table-sm">
+                                                            <thead border='1'>
+                                                              <tr>
+                                                                <th>Livestocks</th>
+                                                                 <th>Owned?</th>
+                                                                <th>Total</th>
+                                                                <th>Total Gone</th>
+                                                                <th>Total Present</th>
+                                                                <th>Food</th>
+                                                                <th>Water</th>
+                                                              </tr>
+                                                            </thead>
+                                                            <tbody id="tableLp"> 
+                                                              <tr>
+                                                                <td><input type="text" class="form-control" name="" placeholder="Enter Name of Animal" id="myInput"></td>
+                                                                <td><select class="form-control">
+                                                                  <option>-- Select --</option>
+                                                                  <option>Yes</option>
+                                                                  <option>No</option>
+                                                                </select>
+                                                              </td>
+                                                              <td><input type="Number" class="form-control" name=""></td>
+                                                              <td><input type="Number" class="form-control" name=""></td>
+                                                              <td><input type="Number" class="form-control" name=""></td>
+                                                              <td><input type="text" class="form-control" name=""></td>
+                                                              <td><input type="text" class="form-control" name=""></td>
+                                                              </tr> 
+                                                            </tbody>
+                                                    </table> 
+                                                    <button class="btn btn-success btn-outline-success" onclick="addLp()">Add Livestock</button> 
+                                                  </div>
+                                                  <div class="table-responsive col-md-12 mb-3">
+                                                    <table border="1" class="table table-hover table-sm">
+                                                            <thead border='1'>
+                                                              <tr>
+                                                                <th>Poultry</th>
+                                                                 <th>Total</th>
+                                                                <th>Total Gone</th>
+                                                                <th>Total Present</th>
+                                                                <th>Food</th>
+                                                                <th>Water</th>
+                                                              </tr>
+                                                            </thead>
+                                                            <tbody id="tablePoultry"> 
+                                                              <tr>
+                                                                <td><input type="text" class="form-control" name="" placeholder="Enter Name of Animal" id="myInput"></td>
+                                                              <td><input type="Number" class="form-control" name=""></td>
+                                                              <td><input type="Number" class="form-control" name=""></td>
+                                                              <td><input type="Number" class="form-control" name=""></td>
+                                                              <td><input type="text" class="form-control" name=""></td>
+                                                              <td><input type="text" class="form-control" name=""></td>
+                                                              </tr> 
+                                                            </tbody>
+                                                    </table> 
+                                                    <button class="btn btn-success btn-outline-success" onclick="addPoultry()">Add Poultry</button> 
+                                                  </div>
+                                                  </div>
+                                              </div>
+
+                                                
+                                                <!-- End of A Tanod Form -->
+
+
+                                                <!-- A Fisher - Hide -->
+                                                <div class="col-md-12" style="display: none;" id="fishingLive">
+                                                  <div class="row">
+                                                    <div class="col-md-12 " id="legendFarm">
+                                                              <legend>
+                                                                 <h6 class="text-left text-success">
+                                                                 <strong>Fishing</strong>
+                                                                 </h6>
+                                                              </legend>
+                                                    </div>
+                                                    <div class="form-group col-md-3" >
+                                                      <label style="font-size: 13px;">No. of Owned Banca</label>
+                                                      <input class="form-control" type="text" name="">
+                                                    </div>
+                                                    <div class="form-group col-md-3" >
+                                                      <label style="font-size: 13px;">Type of Bance</label>
+                                                      <select class="form-control">
+                                                        <option>-- Select --</option>
+                                                        <option>Motorized</option>
+                                                        <option>Non-Motorized</option>
+                                                      </select>
+                                                    </div>
+                                                     <div class="form-group col-md-3" >
+                                                      <label style="font-size: 13px;">Type of Ownership</label>
+                                                      <select class="form-control">
+                                                        <option>-- Select --</option>
+                                                        <option>Sole Owned</option>
+                                                        <option>Co-owned</option>
+                                                      </select>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                      <label>Average Houdehold per month</label>
+                                                      <input type="Number" class="form-control" name="">
+                                                    </div>
+                                                  </div>
+                                              </div>
+                                                
+                                                <!-- End of A Farmer Form -->
+                                </div>
+                              </div>
+
+                              
+
+                              <div style="overflow:auto;">
+                                <div style="float:right;">
+                                  <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                  <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                                </div>
+                              </div>
+                              <!-- Circles which indicates the steps of the form: -->
+                              <div style="text-align:center;margin-top:40px;">
+                                <span class="step"><br> <strong>1</strong></span>
+                                <span class="step"><br> <strong>2</strong></span>
+                                <span class="step"><br> <strong>3</strong></span>
+                                <span class="step"><br> <strong>4</strong></span>
+                              </div>
+                            </form>
+                                <p style="color: gray" class="text-center">
+                                  <strong style="color: gray">1</strong> Basic Information
+                                  <strong style="color: gray">2</strong> Health Information
+                                  <strong style="color: gray">3</strong> Educational Attainment
+                                  <strong style="color: gray">3</strong> Livelihood Information
+                                </p>
+                                </p>
+                        </div>
+              </div>
+            </div>
+          </div>
+
+ 
+          
+          <!-- /Card Columns-->
+        </div>
+        <div class="col-lg-12
+        ">
+          <!-- Example Pie Chart Card-->
+          <div class="card mb-3">
+            <div class="card-header">
+              Barangay Profiled
+            </div>
+            <div class="card-body ">
+              <table class="table table-responsive table-hover table-sm">
+                        <thead style="background-color: #FFFFBF;">
+                          <tr>
+                            <th>Name of Barangay</th>
+                             <th>Municipality</th>
+                            <th>Date Brgy. Created</th>
+                            <th>Physical Description</th>
+                            <th>Barangay Classification</th>
+                            <th>Barangay Type</th>
+                             <th>Ratification Date</th>
+                            <th>Market Day</th>
+                            <th>Fiest Day</th>
+                          </tr>
+                        </thead>
+                        <tbody> 
+                          <tr>
+                            <td>Sundosia Y. Mote</td>
+                            <td>Barangay</td>
+                            <td>ISA 2</td>
+                            <td>Sundosia Y. Mote</td>
+                            <td>Barangay</td>
+                            <td>ISA 2</td>
+                            <td>Sundosia Y. Mote</td>
+                            <td>Barangay</td>
+                            <td>ISA 2</td>
+                          </tr>
+                         
+                        </tbody>
+              </table>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div>
+          <!-- Example Notifications Card-->
+        </div>
+      </div>
+      <!-- Example DataTables Card-->
+    </div>
+    </div>
+    <!-- End Page CONTENT -->
+  </div>
+
+  <!-- FOOTER -->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © ARMM Information Management System 2018</small>
+        </div>
+      </div>
+    </footer>
+
+</body>
+<!-- Core plugin JavaScript-->
+<script src="../../lib/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Angular Libraries -->
+<script type="text/javascript" src="../../lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="../../lib/angular/angular-route.min.js"></script>
+<script type="text/javascript" src="../../lib/app.js"></script>
+<script type="text/javascript" src="../../lib/js/data.js"></script>
+<!-- Js files -->
+<script type="text/javascript" src="../../lib/js/loginCtrl.js"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="../../lib/vendor/jquery/jquery.min.js"></script>
+<script src="../../lib/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="../../lib/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="../../lib/vendor/chart.js/Chart.min.js"></script>
+<script src="../../lib/vendor/datatables/jquery.dataTables.js"></script>
+<script src="../../lib/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="../../lib/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="../../lib/js/sb-admin-datatables.min.js"></script>
+<script src="../../lib/js/sb-admin-charts.min.js"></script>
+<!-- My JS -->
+<script src="../../lib/js/myjs.js"></script>
+<script src="../../lib/js/aims.js"></script>
+</html>

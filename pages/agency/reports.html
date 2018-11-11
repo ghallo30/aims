@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html ng-app="myApp" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>AIMS</title>
+  <link rel="icon" type="image/png" href="../../image/icon.png" sizes="32x32">
+    <!-- Bootstrap core CSS-->
+  <link href="../../lib/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+  <link href="../../lib/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+  <link href="../../lib/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+  <link href="../../lib/css/sb-admin.css" rel="stylesheet">
+    <!-- My Stylesheet -->
+  <link href="../../lib/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="fixed-nav sticky-footer bg-dark" id="page-top">
+		<!-- Navigation-->
+	  	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"  style="background-color: #00441b;">
+		    <a class="navbar-brand" href="#" style="color: #ffff00; font-size: 16px;">
+		   		<img src="../../image/navlogo.png" alt="..." class="rounded-circle" style="height: 30px;">
+		   		 ARMM Information Management System
+			</a>
+		    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+
+		    <!-- SIDEBAR -->
+	     	<div class="collapse navbar-collapse" id="navbarResponsive">
+	            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion" style="background-color: #00441b;">
+	              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
+	                <a class="nav-link" href="../dashboard.html">
+	                  <i class="fa fa-fw fa-home"></i>
+	                  <span class="nav-link-text">Home</span>
+	                </a>
+	              </li>
+	              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profiling">
+	                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+	                  <i class="fa fa-fw fa-file-text-o"></i>
+	                  <span class="nav-link-text">Profiling</span>
+	                </a>
+	                <ul class="sidenav-second-level collapse" id="collapseExamplePages" style="background-color: #003314;">
+	                  <li><a href="prof_brgy.html">Barangay</a></li>
+	                  <li><a href="prof_coop.html">Cooperative</a></li>
+	                  <li><a href="prof_indv.html">Individual</a></li>
+	                </ul>
+	              </li>
+	              <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Reports" >
+	                <a class="nav-link" href="reports.html">
+	                  <i class="fa fa-fw fa-bar-chart"></i>
+	                  <span class="nav-link-text">Reports</span>
+	                </a>
+	              </li>
+	              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Mapping">
+	                <a class="nav-link" href="mapping.html">
+	                  <i class="fa fa-fw fa-map-marker"></i>
+	                  <span class="nav-link-text">Mapping</span>
+	                </a>
+	              </li>
+	              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projects" >
+	                <a class="nav-link" href="projects.html">
+	                  <i class="fa fa-fw fa-tasks"></i>
+	                  <span class="nav-link-text">Projects</span>
+	                </a>
+	              </li>
+	              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Indicators" >
+	                <a class="nav-link" href="addIndicator.html">
+	                  <i class="fa fa-fw fa-plus-circle"></i>
+	                  <span class="nav-link-text">Indicators</span>
+	                </a>
+	              </li>
+	            </ul>
+	            <ul class="navbar-nav sidenav-toggler" style="background-color: #003314;">
+	              <li class="nav-item">
+	                <a class="nav-link text-center" id="sidenavToggler">
+	                  <i class="fa fa-fw fa-angle-left"></i>
+	                </a>
+	              </li>
+	            </ul>
+	            <ul class="navbar-nav ml-auto">
+	              <li class="nav-item dropdown">
+	                <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                  Username
+	                </a>
+	                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+	                  <a class="dropdown-item" data-toggle="modal" data-target="#userProfile">
+	                    <i class="fa fa-fw fa-user"></i>User Profile
+	                  </a>
+	                  <div class="dropdown-divider"></div>
+	                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">
+	                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+	                  </a>
+	                </div>
+	              </li>
+	            </ul>
+	        </div>
+	  	</nav>
+
+	  	<br><br>
+		<!-- Page CONTENT -->
+		<div class="content-wrapper">
+		
+		    <div class="container-fluid">
+		      <!-- Breadcrumbs-->
+		      <ol class="breadcrumb">
+		        <li class="breadcrumb-item">
+		          <a href="#">Reports</a>
+		        </li>
+		        <!-- <li class="breadcrumb-item active">Barangay</li> -->
+		      </ol>
+
+		      <div class="card mb-3">
+		        <div class="card-header">
+		          <i class="fa fa-bar-chart"></i> Generate Report</div>
+		        <div class="card-body">
+		          <div class="row">  
+		            <div class="form-group col-md-3 col-lg-3">
+		              <label>Reports for </label>
+		              <select class="form-control" id="get_report_for" onchange="selectReportFor()">
+		                <option>- Select -</option>
+		                  <option value="Brgy">Barangay</option>
+		                  <option value="Coop">Cooperative</option>
+		                  <option value="Indv">Individual</option>
+		                  <option value="Proj">Projects</option>
+		              </select>
+		            </div>
+
+		            <div class="form-group col-md-3 col-lg-9" id="list_report" style="display: none;">
+		            	
+		            	<!-- REPORTS FOR BARANGAY -->
+                          <div class="card-body" id="brgy_DIV" style="display: none">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <p class="font-weight-bold mb-1">BARANGAY</p>
+                                      <p class="font-weight-light">Select all indicators that you want to include in the generation of report</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <i>Physical</i>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Barangay Name</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Municipality</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Physical Description</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Ratification Date</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Date of Brgy Created</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Market Day</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Fiestival Day</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Latest Amount of IRA</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Means of Transportation</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Means of Communication</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Brgy. Classification</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Brgy. Type</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <i>Demographic</i>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Legal Creation Basis</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Land Area</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Boundaries North</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Boundaries South</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Boundaries East</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Boundaries West</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Congressional District</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Total Precinct</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Total Voters</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Major Crops</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Agricultural Land Utilized</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Agricultural Land Covered</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <br>
+                                        
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Anti-drug Council</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Contact Number</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Email Address</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="" onclick="yearDIVcheck()" id="yearC">For Specific Year</label>
+                                        </div>
+                                        <div class="form-group col-md-12" style="display: none;" id="displayyearDIV">
+                                          <div class="row">
+                                                <div class="input-group col-sm-12">
+                                                  <select class="custom-select col-sm-6">
+                                                    <option>- FROM -</option>
+                                                    <option>2017</option>
+                                                    <option>2016</option>
+                                                    <option>2015</option>
+                                                    <option>2014</option>
+                                                  </select>
+                                                  <select class="custom-select col-sm-6">
+                                                    <option>- TO -</option>
+                                                    <option>2017</option>
+                                                    <option>2016</option>
+                                                    <option>2015</option>
+                                                    <option>2014</option>
+                                                  </select>
+                                                </div>
+                                              </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <button type="button" class="btn btn-success float-right" onclick="generate_report()">Create Report Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+		            	<!-- REPORTS FOR INDIVIDUAL -->
+                           <div class="card-body" id="indv_DIV" style="display: none">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <p class="font-weight-bold mb-1">INDIVIDUAL</p>
+                                      <p class="font-weight-light">Select all indicators that you want to include in the generation of report</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Name</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Age</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Gender</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Civil Status</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Blood Type</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Contact Number</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Religion</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Occupation</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Barangay</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="" onclick="yearDIVcheck_i()" id="yearC_i">Year</label>
+                                        </div>
+                                        <div class="form-group col-lg-12" style="display: none;" id="displayyearDIV_i"> 
+                                              <div class="row">
+                                                <div class="input-group col-sm-12">
+                                                  <select class="custom-select col-sm-6">
+                                                    <option>- FROM -</option>
+                                                    <option>2017</option>
+                                                    <option>2016</option>
+                                                    <option>2015</option>
+                                                    <option>2014</option>
+                                                  </select>
+                                                  <select class="custom-select col-sm-6">
+                                                    <option>- TO -</option>
+                                                    <option>2017</option>
+                                                    <option>2016</option>
+                                                    <option>2015</option>
+                                                    <option>2014</option>
+                                                  </select>
+                                                </div>
+                                              </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <button type="button" class="btn btn-success float-right" onclick="generate_report()">Create Report Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+		            	<!-- REPORTS FOR COOPERATIVE -->
+
+                          <div class="card-body" id="coop_DIV" style="display: none">
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <p class="font-weight-bold mb-1">COOPERATIVE</p>
+                                      <p class="font-weight-light">Select all indicators that you want to include in the generation of report</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Cooperative Name</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Abbrevation</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Description</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Contact Number</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Barangay</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Date Registered</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="" onclick="yearDIVcheck_c()" id="yearC_c">For Specific Year</label>
+                                        </div>
+                                        <div class="form-group col-md-12" style="display: none;" id="displayyearDIV_c">
+                                            <div class="row">
+                                                <div class="input-group col-sm-12">
+                                                  <select class="custom-select col-sm-6">
+                                                    <option>- FROM -</option>
+                                                    <option>2017</option>
+                                                    <option>2016</option>
+                                                    <option>2015</option>
+                                                    <option>2014</option>
+                                                  </select>
+                                                  <select class="custom-select col-sm-6">
+                                                    <option>- TO -</option>
+                                                    <option>2017</option>
+                                                    <option>2016</option>
+                                                    <option>2015</option>
+                                                    <option>2014</option>
+                                                  </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <button type="button" class="btn btn-success float-right" onclick="generate_report()">Create Report Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- REPORTS FOR PROJECT -->
+                        	<div class="card-body" id="proj_DIV" style="display: none">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <p class="font-weight-bold mb-1">PROJECT</p>
+                                      <p class="font-weight-light">Select all indicators that you want to include in the generation of report</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Project Name</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Status</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Cost</label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="">Agency</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" value="" onclick="yearDIVcheck_p()" id="yearC_p">For Specific Year</label>
+                                        </div>
+                                        <div class="form-group col-md-12" style="display: none;" id="displayyearDIV_p">
+                                            <div class="row">
+                                                <div class="input-group col-sm-12">
+                                                  <select class="custom-select col-sm-6">
+                                                    <option>- FROM -</option>
+                                                    <option>2017</option>
+                                                    <option>2016</option>
+                                                    <option>2015</option>
+                                                    <option>2014</option>
+                                                  </select>
+                                                  <select class="custom-select col-sm-6">
+                                                    <option>- TO -</option>
+                                                    <option>2017</option>
+                                                    <option>2016</option>
+                                                    <option>2015</option>
+                                                    <option>2014</option>
+                                                  </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <button type="button" class="btn btn-success float-right" onclick="generate_report()">Create Report Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END PROJECT DIV -->
+
+		            </div>
+
+		          </div> 
+
+
+
+                            <!-- REPORTS RESULTSSSS -->
+                             <div class="card"  style="display: none; border: 3px solid #b3ffa5;" id="table_DIV">
+							    <div class="card-header text-center" style="background-color: #b3ffa5;">
+							        REPORT GENERATED
+							    </div>
+							    <div class="card-body">
+							        <div class="float-right">
+							            <button class="btn btn-outline-success" type="button" onclick="window.open('reports_fullscreen.html')" >
+							                <i class="fa fa-fw fa-expand"></i> View Full Screen
+							            </button> &nbsp
+							            <button class="btn btn-outline-success" data-toggle="modal" data-target="#viewGraphModal" type="button">
+							                <i class="fa fa-fw fa-line-chart"></i> View Graph
+							            </button>&nbsp
+							            <button class="btn btn-outline-success" onclick="printData()">
+							                <i class="fa fa-fw fa-print"></i> Print
+							            </button>
+							        </div>
+							        <div class="col-lg-12 table-responsive">              
+							                                
+							                                <caption> Reports created on <b>21 February 2017</b> </caption>
+							                                <table class="table table-hover table-sm" id="printTable">
+							                                    <tr style="background-color: #ffffbf;">
+							                                        <th>Name</th>
+							                                        <th>Age</th>
+							                                        <th>Livelihood</th>
+							                                        <th>Barangay</th>
+							                                        <th>Action</th>
+							                                    </tr>
+							                                    <tr>
+							                                        <td>Juan Sikap</td>
+							                                        <td>30</td>
+							                                        <td>Farmer</td>
+							                                        <td>Picong</td>
+							                                        <td><a href="mapping.html" class="btn btn-sm btn-success">View map location</a></td>
+							                                    </tr>
+							                                    <tr>
+							                                        <td>Manang Biday</td>
+							                                        <td>43</td>
+							                                        <td>Farmer</td>
+							                                        <td>Balabagan</td>
+							                                        <td><a href="mapping.html" class="btn btn-sm btn-success">View map location</a></td>
+							                                    </tr>
+							                                    <tr>
+							                                        <td>Maria Ganda</td>
+							                                        <td>39</td>
+							                                        <td>Farmer</td>
+							                                        <td>Saguiran</td>
+							                                        <td><a href="mapping.html" class="btn btn-sm btn-success">View map location</a></td>
+							                                    </tr>
+							                                    <tr>
+							                                        <td>Sarah Lantong</td>
+							                                        <td>32</td>
+							                                        <td>Farmer</td>
+							                                        <td>Wato</td>
+							                                        <td><a href="mapping.html" class="btn btn-sm btn-success">View map location</a></td>
+							                                    </tr>
+							                                </table>
+							            </div>  
+							    </div>
+							</div>
+							<br><br>
+		        </div>
+
+		            
+		        <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
+		      </div>
+		      <!-- Example DataTables Card-->
+		    </div>
+
+		</div>
+		<!-- End Page CONTENT -->
+	</div>
+
+	<!-- FOOTER -->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © ARMM Information Management System 2018</small>
+        </div>
+      </div>
+    </footer>
+
+</body>
+<!-- Core plugin JavaScript-->
+<script src="../../lib/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Angular Libraries -->
+<script type="text/javascript" src="../../lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="../../lib/angular/angular-route.min.js"></script>
+<script type="text/javascript" src="../../lib/app.js"></script>
+<script type="text/javascript" src="../../lib/js/data.js"></script>
+<!-- Js files -->
+<script type="text/javascript" src="../../lib/js/loginCtrl.js"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="../../lib/vendor/jquery/jquery.min.js"></script>
+<script src="../../lib/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="../../lib/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="../../lib/vendor/chart.js/Chart.min.js"></script>
+<script src="../../lib/vendor/datatables/jquery.dataTables.js"></script>
+<script src="../../lib/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="../../lib/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="../../lib/js/sb-admin-datatables.min.js"></script>
+<script src="../../lib/js/sb-admin-charts.min.js"></script>
+<!-- My JS -->
+<script src="../../lib/js/myjs.js"></script>
+<script src="../../lib/js/aims.js"></script>
+</html>
+
+
+
+
+
+
+<!-- MODAL GRAPH -->
+
+<div class="modal fade" tabindex="-1"  role="dialog" id="viewGraphModal">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Graphical Result</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="form-group col-lg-3">
+                <label>Set value for x</label>
+                <select class="form-control">
+                        <option>- Select -</option>
+                        <option>Name</option>
+                        <option>Age</option>
+                        <option>Barangay</option>
+                        <option>Municipality</option>
+                        <option>Province</option>
+                        <option>Livelihood</option>
+                        <option>Civil Status</option>
+                        <option>Educational Attainment</option>
+                        <option>Monthly Income</option>
+                </select>
+            </div>
+            <div class="form-group col-lg-3">
+                <label>Set value for y</label>
+                <select class="form-control">
+                        <option>- Select -</option>
+                        <option>Name</option>
+                        <option>Age</option>
+                        <option>Barangay</option>
+                        <option>Municipality</option>
+                        <option>Province</option>
+                        <option>Livelihood</option>
+                        <option>Civil Status</option>
+                        <option>Educational Attainment</option>
+                        <option>Monthly Income</option>
+                </select>
+            </div>
+            <div class="form-group col-lg-3">
+                <label>Set value for z</label>
+                <select class="form-control">
+                        <option>- Select -</option>
+                        <option>Name</option>
+                        <option>Age</option>
+                        <option>Barangay</option>
+                        <option>Municipality</option>
+                        <option>Province</option>
+                        <option>Livelihood</option>
+                        <option>Civil Status</option>
+                        <option>Educational Attainment</option>
+                        <option>Monthly Income</option>
+                </select>
+            </div>
+            <div class="form-group col-lg-3">
+                <label>Type of graph</label>
+                <select class="form-control" id="select_graph_type">
+                    <option>- Select -</option>
+                    <option value="bar">Bar graph</option>
+                    <option value="line">Line graph</option>
+                    <option value="pie">Pie graph</option>
+                </select>
+            </div>
+            <div class="col-lg-12">
+                <button class="btn btn-outline-success btn-block" onclick="showGraph_modal()">SHOW GRAPH</button>
+            </div>
+            <div class="col-lg-12" style="display: none" id="bar_graph_div">
+                 <br>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> BAR GRAPH
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <!-- /.col-lg-4 (nested) -->
+                                <div class="col-lg-12">
+                                    <canvas id="barChart" width="400" height="180"></canvas>
+                                </div>
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+            </div>
+            <div class="col-lg-12" style="display: none" id="line_graph_div">
+                <br>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> LINE GRAPH
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <!-- /.col-lg-4 (nested) -->
+                                <div class="col-lg-12">
+                                    <canvas id="lineChart" width="400" height="180"></canvas>
+                                </div>
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+            </div>
+            <div class="col-lg-12" style="display: none" id="pie_graph_div">
+                <br>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> PIE GRAPH
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <!-- /.col-lg-4 (nested) -->
+                                <div class="col-lg-12">
+                                    <canvas id="pieChart" width="400" height="180"></canvas>
+                                </div>
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- END MODAL -->

@@ -1,0 +1,158 @@
+.card-header{
+	color: #00441b;
+}
+/*
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
+    color: #ffff00 !important;
+    background-color: #003314;
+}
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav li:hover a {
+    color: #ffffbf !important;
+}*/
+
+
+@media (min-width: 992px) {
+  #mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
+    background: #343a40;
+  }
+  #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
+    color: #ffff00 !important;
+    background-color: #003314;
+  }
+  #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:focus, #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:hover {
+    color: white;
+  }
+  #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level,
+  #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level {
+    background: #343a40;
+  }
+}
+#mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a:focus, #mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a:hover,
+#mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a:focus,
+#mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a:hover {
+  color: #ffffbf;
+}
+#mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item > .nav-link:hover {
+  color: #ffffbf;
+}
+
+
+  #mainNav .navbar-collapse .navbar-sidenav > .nav-item {
+    width: 180px;
+    padding: 0;
+  }
+  #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li,
+  #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li {
+    width: 180px;
+  }
+
+  #mainNav.fixed-top .sidenav-toggler > .nav-item {
+    width: 180px;
+    padding: 0;
+  }
+@media (min-width: 992px) {
+  .content-wrapper {
+    margin-left: 180px;
+  }
+}
+@media (min-width: 992px) {
+  footer.sticky-footer {
+    width: calc(100% - 180px);
+  }
+}
+
+datalist{
+  border: 1px solid red;
+}
+
+/*Project Multi Step*/
+
+/** {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+*/
+/*#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}*/
+
+h1 {
+  text-align: center;  
+}
+
+/*input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}*/
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
+
+/*END Project Multi Step*/
+
+
+
+
+/*CSS AXE*/
+#concreteBaby {
+  font-size: 13px;
+  font-style: italic;
+}
